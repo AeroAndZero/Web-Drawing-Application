@@ -1,0 +1,201 @@
+/* Disabling Pull Down To Refresh*/
+body{
+    overscroll-behavior-y: none;
+    background-color: #FFFF00;
+    color: black;
+}
+
+#sketchcontainer{
+    width: 100%;
+    margin-right: auto;
+}
+
+.sliderClass::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #4CAF50;
+    cursor: pointer;
+}
+  
+.sliderClass::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+h1{
+    color: black;
+    background-color: #FFFF00;
+}
+
+/* Color Selector Sliders Style : */
+
+    /* Red Color*/
+.redColorSliderClass {
+  -webkit-appearance: none;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.redColorSliderClass::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 10%; 
+  background: rgb(255, 0, 0);
+  cursor: pointer;
+}
+
+.redColorSliderClass::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 10%;
+  background: rgb(255, 0, 0);
+  cursor: pointer;
+}
+
+    /* Green Color */
+
+.greenColorSliderClass {
+    -webkit-appearance: none;
+    border-radius: 5px;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+.greenColorSliderClass::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 10%; 
+    background: rgb(0, 255, 0);
+    cursor: pointer;
+  }
+  
+.greenColorSliderClass::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 10%;
+    background: rgb(0, 255, 0);
+    cursor: pointer;
+}
+
+    /* Blue Color */
+
+.blueColorSliderClass {
+  -webkit-appearance: none;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.blueColorSliderClass::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 10%; 
+  background: rgb(0, 0, 255);
+  cursor: pointer;
+}
+
+.blueColorSliderClass::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 10%;
+  background: rgb(0, 0, 255);
+  cursor: pointer;
+}
+
+  /* Alpha Color Slider */
+
+.alphaColorSliderClass {
+  -webkit-appearance: none;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+  
+.alphaColorSliderClass::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 10%; 
+  background: rgb(180, 180, 180);
+  cursor: pointer;
+}
+  
+.alphaColorSliderClass::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 10%;
+  background: rgb(180, 180, 180);
+  cursor: pointer;
+}
+
+/* Eraser And Brush Setters Style */
+.eraserSettingsClass{
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  background-color: deeppink;
+  color: white;
+  font-size: 34px;
+  font-family: "Century Gothic";
+}
+
+.brushSettingsClass{
+  border: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  background-color: deeppink;
+  color: white;
+  font-size: 34px;
+  font-family: "Century Gothic";
+}
+
+/* Submission Button Style */
+.submitButtonClass{
+  border: none;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 34px;
+  font-family: "Century Gothic";
+  background-color: rgb(38, 180, 44);
+  color: white;
+  margin-right: 10px;
+  font-style: oblique;
+}
+
+/* View Submissions Button Style */
+.viewSubmissionsButtonClass{
+  border-radius: 3px;
+  border: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 34px;
+  font-family: "Century Gothic";
+  background-color: rgb(38, 180, 44);
+  color: white;
+  font-style: oblique;
+}

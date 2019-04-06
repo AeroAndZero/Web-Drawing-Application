@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Game Time!</title>
+        <meta name="viewport" content="user-scalable=0">
+        <script>
+            //Prompt For Name
+            let username;
+            let usernameexist = false;
+            let usernamearray;
+
+            function userprompt(){
+                username = prompt("Enter Your Name : ");
+            }
+            userprompt();
+
+            //Authentication Setup
+            if(username == null || username == ""){
+                window.location.href = "nullusername.html";
+            }else{
+                usernamearray = username.split("");
+                for(var s = 0; s < usernamearray.length; s++){
+                    if(usernamearray[s] != " "){
+                        usernameexist = true;
+                    }        
+                }
+            }
+            if(usernameexist == false){
+                window.location.href = "nullusername.html";
+            }
+        </script>
+        <script src="p5.min.js"></script>
+        <script src="addons/p5.dom.min.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+        <script src="firewallconfig.js"></script>
+    </head>
+    <body>
+
+        <div id="whole">
+            <div id="topDiv">
+                <div id="draw" style="font-size: 34px">
+                    Draw Your Gift :
+                </div>
+            </div>
+            <br>
+            <div id="sketchcontainer" align="center">
+                <script src="sketch.js"></script>
+            </div>
+
+        </div>
+
+    </body>
+</html>
