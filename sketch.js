@@ -14,6 +14,7 @@ let r = [],g = [],b = [],a = []; //Color For Brush
 let lastBrush = []; //Last Brush Type
 let imgStorageRef, databaseRef; // Firebase References
 let finalData; //Stores The Submission On Submit Button Press
+let msgbox; //Div For 'Thank you' Dialog Box
 
 function setup(){
     //Window Setup
@@ -33,7 +34,7 @@ function setup(){
     var storage = firebase.storage();
     var database = firebase.database();
     imgStorageRef = storage.ref("gifts/");
-    databaseRef = database.ref(username+"/");
+    databaseRef = database.ref("gifts/");
 
     //-------------v------------------ All The CSS ---------------v----------------//
     
@@ -42,6 +43,7 @@ function setup(){
 
     //Line 1 Canvas
     var line1 = createDiv();
+    line1.style("align","center");
 
     //Slider
     var sliderdiv = createDiv("BRUSH SIZE :");
@@ -52,13 +54,15 @@ function setup(){
         sliderdiv.style("color","black");
         sliderdiv.style("font-size","34px");
         sliderdiv.style("font-family","Century Gothic");
+        sliderdiv.style("align","center");
         slider.style("-webkit-appearance","none");
-        slider.style("width",0.40 * windowx+"px");
+        slider.style("width",0.50 * windowx+"px");
         slider.style("height","13px");
         slider.style("cursor","pointer");
         slider.style("border-radius","20px");
         slider.style("outline","none");
         slider.style("background","#d3d3d3");
+        slider.style("margin-left","20px");
 
     //Undo Button
     var undo = createButton("Undo");
@@ -71,8 +75,9 @@ function setup(){
         undo.style("color","#ffffff");
         undo.style("font-size","34px");
         undo.style("font-family","Century Gothic");
-        undo.style("border","none");
         undo.style("margin-right","10px");
+        undo.style("margin-left","20px");
+        undo.style("margin-right","20px");
 
     //Clear Button
     var clear = createButton("Clear");
@@ -85,7 +90,6 @@ function setup(){
         clear.style("color","#ffffff");
         clear.style("font-size","34px");
         clear.style("font-family","Century Gothic");
-        clear.style("border","none");
 
     //Setting Up Line 1 Div
     line1.child(sliderdiv);
@@ -93,6 +97,12 @@ function setup(){
     //Line 2 div
     var line2 = createDiv();
     line2.style("clear","both");
+    line2.style("align","center");
+
+    //Line 3 Div
+    var line3 = createDiv();
+    line3.style("clear","both");
+    line3.style("align","center");
 
     //Color Sliders
     colorSlider = createDiv("COLOR : ");
@@ -100,7 +110,6 @@ function setup(){
     greenColorSlider = createSlider(0,255,255);
     blueColorSlider = createSlider(0,255,255);
     alphaColorSlider = createSlider(0,255,255);
-    breakElement = createElement("br");
     eraserSettings = createButton("Set Eraser");
     brushSettings = createButton("Set Brush");
     
@@ -109,10 +118,11 @@ function setup(){
     colorSlider.child(greenColorSlider);
     colorSlider.child(blueColorSlider);
     colorSlider.child(alphaColorSlider);
-    colorSlider.child(breakElement);
-    colorSlider.child(eraserSettings);
-    colorSlider.child(brushSettings);
+    line3.child(eraserSettings);
+    line3.child(brushSettings);
+
         //Color Slider CSS :
+        colorSlider.style("align","center");
         colorSlider.style("font-size","34px");
         colorSlider.style("font-family","Century Gothic");
         colorSlider.style("float","left");
@@ -127,11 +137,8 @@ function setup(){
     buttonDiv = createDiv();
     submitButton = createButton("Submit");
     viewSubmissionsButton = createButton("View Submissions");
-    colorSlider.child(submitButton);
-    colorSlider.child(viewSubmissionsButton);
-    // line2.child(buttonDiv);
-    //     buttonDiv.style("float","right");
-
+    line3.child(submitButton);
+    line3.child(viewSubmissionsButton);
     submitButton.mousePressed(submit);
     viewSubmissionsButton.mousePressed(viewsub);
         //Submit Button & View Submissions Button Style :
@@ -153,7 +160,7 @@ function setup(){
 function draw(){
     //Intialization
     background(0);
-    radius = slider.value();
+    // radius = slider.value();
     
     //overlay Canvas
     image(canvas2,0,0);
@@ -161,11 +168,11 @@ function draw(){
     canvas2.noStroke();
 
     //Actual Canvas
-    stroke(255,0,0);
-    strokeWeight(4);
-    fill(redColorSlider.value(),greenColorSlider.value(),blueColorSlider.value());
     if(isMobileDevice() == false){
-        ellipse(mouseX,mouseY,radius,radius);
+        stroke(255,0,0);
+        strokeWeight(4);
+        fill(redColorSlider.value(),greenColorSlider.value(),blueColorSlider.value());
+        ellipse(mouseX,mouseY,slider.value(),slider.value());
     }
 
     //Showing Selected Color
@@ -193,7 +200,7 @@ if(isMobileDevice() == true){
         
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
-            lastradius.unshift(radius);
+            lastradius.unshift(slider.value());
             r.unshift(redColorSlider.value());
             g.unshift(greenColorSlider.value());
             b.unshift(blueColorSlider.value());
@@ -207,7 +214,7 @@ if(isMobileDevice() == true){
             mhy.unshift(mouseY);
 
             canvas2.stroke(r[0],g[0],b[0],a[0]);
-            canvas2.strokeWeight(radius-4);
+            canvas2.strokeWeight(slider.value()-4);
             canvas2.line(mhx[0],mhy[0],mhx[1],mhy[1]);
         }
     }
@@ -216,6 +223,8 @@ if(isMobileDevice() == true){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
             undoHistoryX.unshift(mhx);
             undoHistoryY.unshift(mhy);
+            mhx = [];
+            mhy = [];
         }
     }
 
@@ -224,12 +233,11 @@ if(isMobileDevice() == true){
 //--------------------------------------- Setting Up Pointer For Mouse
     function mousePressed(){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
-            startedInCanvas = true
             mhx = [];
             mhy = [];
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
-            lastradius.unshift(radius);
+            lastradius.unshift(slider.value());
             r.unshift(redColorSlider.value());
             g.unshift(greenColorSlider.value());
             b.unshift(blueColorSlider.value());
@@ -243,19 +251,18 @@ if(isMobileDevice() == true){
             mhy.unshift(mouseY);
             
             canvas2.stroke(r[0],g[0],b[0],a[0]);
-            canvas2.strokeWeight(radius-4);
+            canvas2.strokeWeight(slider.value()-4);
             canvas2.line(mhx[0],mhy[0],mhx[1],mhy[1]);
         }
     }
 
     function mouseReleased(){
-        if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy && startedInCanvas == true){
-            startedInCanvas = false;
+        if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
             undoHistoryX.unshift(mhx);
             undoHistoryY.unshift(mhy);
-        
-            console.log("X History : " + undoHistoryX);
-            console.log("Y History : " + undoHistoryY);
+
+            mhx = [];
+            mhy = [];
         }
     }
 }
@@ -321,12 +328,16 @@ function submit(){
         greenChannel : g,
         blueChannel : b,
         alphaChannel : a,
-        radius : lastradius
+        radius : lastradius,
+        canvasX : windowx,
+        canvasY : windowy,
+        username : username
     }
     databaseRef.push(finalData);
+    alert("Thank You For Your Submission !");
 }
 
 //--------------------------------------- View Submission Button Function
 function viewsub(){
-
+    window.location.href = "ViewSubmissions.html";
 }

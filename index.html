@@ -2,6 +2,15 @@
     <head>
         <title>Game Time!</title>
         <meta name="viewport" content="user-scalable=0">
+        <meta name="theme-color" content="#FFFF00" />
+        <meta name="msapplication-navbutton-color" content="#FFFF00">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#FFFF00">
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+
+        <!-------------- Script For User Authentication -------------->
+
         <script>
             //Prompt For Name
             let username;
@@ -9,7 +18,7 @@
             let usernamearray;
 
             function userprompt(){
-                username = prompt("Enter Your Name : ");
+                username = prompt("Enter Your Full Name : ");
             }
             userprompt();
 
@@ -28,17 +37,21 @@
                 window.location.href = "nullusername.html";
             }
         </script>
-        <script src="p5.min.js"></script>
-        <script src="addons/p5.dom.min.js"></script>
-        <link rel="stylesheet" href="style.css">
+
+        <!-------------- Reference To All The P5Js Library -------------->
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
         <script src="firewallconfig.js"></script>
+        <link rel="stylesheet" href="style.css">
+
     </head>
     <body>
 
         <div id="whole">
             <div id="topDiv">
-                <div id="draw" style="font-size: 34px">
+                <div id="draw" style="font-size: 34px;font-family: Century Gothic;">
                     Draw Your Gift :
                 </div>
             </div>

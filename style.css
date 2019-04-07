@@ -42,6 +42,8 @@ h1{
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .redColorSliderClass::-webkit-slider-thumb {
@@ -70,6 +72,7 @@ h1{
     outline: none;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    margin-right: 10px;
   }
   
 .greenColorSliderClass::-webkit-slider-thumb {
@@ -98,6 +101,7 @@ h1{
   outline: none;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  margin-right: 10px;
 }
 
 .blueColorSliderClass::-webkit-slider-thumb {
@@ -148,7 +152,6 @@ h1{
 
 /* Eraser And Brush Setters Style */
 .eraserSettingsClass{
-  border: none;
   margin-left: 10px;
   margin-right: 10px;
   -webkit-appearance: none;
@@ -161,8 +164,6 @@ h1{
 }
 
 .brushSettingsClass{
-  border: none;
-  margin-left: 10px;
   margin-right: 10px;
   -webkit-appearance: none;
   appearance: none;
@@ -175,7 +176,6 @@ h1{
 
 /* Submission Button Style */
 .submitButtonClass{
-  border: none;
   border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
@@ -190,7 +190,6 @@ h1{
 /* View Submissions Button Style */
 .viewSubmissionsButtonClass{
   border-radius: 3px;
-  border: none;
   -webkit-appearance: none;
   appearance: none;
   font-size: 34px;
