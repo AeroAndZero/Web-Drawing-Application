@@ -37,10 +37,8 @@ function gotData(data){
         username.unshift(dataList[k].username); // All I Need In This Function
 
         //Creating List Of Username:
-        var li = createElement('li','');
-        li.parent("#links");
         var usernameAhref = createA('#',dataList[k].username);
-        usernameAhref.parent(li);
+        usernameAhref.parent("#links");
         usernameAhref.mousePressed(printLink);
     }
     document.getElementById("Header").innerHTML = "Click On Any Of The Link To View Submission";

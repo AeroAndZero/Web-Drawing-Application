@@ -1,0 +1,9 @@
+.links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.links > a{
+    border: 5%;
+}
