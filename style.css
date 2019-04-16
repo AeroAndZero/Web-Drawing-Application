@@ -1,13 +1,57 @@
 /* Disabling Pull Down To Refresh*/
 body{
+    overflow: hidden;
     overscroll-behavior-y: none;
     background-color: #FFFF00;
     color: black;
 }
 
+#draw{
+  font-size: 34px;
+  font-family: 'Raleway', sans-serif;
+}
+
 #sketchcontainer{
     width: 100%;
     margin-right: auto;
+}
+
+.line1{
+  /*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  */
+  font-size: 34px;
+  font-family: 'Raleway', sans-serif;;
+}
+
+.line2{
+  /*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  */
+  font-size: 34px;
+  font-family: 'Raleway', sans-serif;;
+}
+
+.line3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.sliderClass{
+  -webkit-appearance : none;
+  height: 13px;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 20px;
+  outline: none;
+  background: #d3d3d3;
+  margin-left: 20px;
 }
 
 .sliderClass::-webkit-slider-thumb {
@@ -28,9 +72,24 @@ body{
     cursor: pointer;
 }
 
-h1{
-    color: black;
-    background-color: #FFFF00;
+.undo{
+  -webkit-appearance:none;
+  border-radius: 5px;
+  background-color: #ff0000;
+  color: #FFFFFF;
+  font-size: 34px;
+  font-family: 'Raleway', sans-serif;
+  margin-right: 20px
+  margin-left: 20px;
+}
+
+.clear{
+  -webkit-appearance: none;
+  border-radius: 5px;
+  background-color: #ff0000;
+  color: #FFFFFF;
+  font-size: 34px;
+  font-family: 'Raleway', sans-serif;
 }
 
 /* Color Selector Sliders Style : */
@@ -160,7 +219,7 @@ h1{
   background-color: deeppink;
   color: white;
   font-size: 34px;
-  font-family: "Century Gothic";
+  font-family: 'Raleway', sans-serif;;
 }
 
 .brushSettingsClass{
@@ -171,7 +230,7 @@ h1{
   background-color: deeppink;
   color: white;
   font-size: 34px;
-  font-family: "Century Gothic";
+  font-family: 'Raleway', sans-serif;;
 }
 
 /* Submission Button Style */
@@ -180,7 +239,7 @@ h1{
   -webkit-appearance: none;
   appearance: none;
   font-size: 34px;
-  font-family: "Century Gothic";
+  font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
   margin-right: 10px;
@@ -193,7 +252,7 @@ h1{
   -webkit-appearance: none;
   appearance: none;
   font-size: 34px;
-  font-family: "Century Gothic";
+  font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
   font-style: oblique;

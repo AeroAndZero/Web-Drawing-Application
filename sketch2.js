@@ -37,8 +37,10 @@ function gotData(data){
         username.unshift(dataList[k].username); // All I Need In This Function
 
         //Creating List Of Username:
+        seplink = createDiv();
+        seplink.addClass("seplink");
         var usernameAhref = createA('#',dataList[k].username);
-        usernameAhref.parent("#links");
+        seplink.child(usernameAhref)
         usernameAhref.mousePressed(printLink);
     }
     document.getElementById("Header").innerHTML = "Click On Any Of The Link To View Submission";
@@ -51,11 +53,12 @@ function errorData(err){
 
 //----------------------------------------------- Printing Links & Drawing Canvas
 function printLink(){
+    document.getElementById("Header").innerHTML = "By " + this.html();
+
     var clickKey = keys[username.indexOf(this.html())];
     var oneDrawingRef = database.ref('gifts/' + clickKey);
     
     oneDrawingRef.on('value',function(data){
-        document.getElementById("Header").innerHTML = "Loading...";
         
         //Storing All Data
         undoHistoryX = dataList[clickKey].drawX;
@@ -80,5 +83,4 @@ function printLink(){
         }
 
     },errorData);
-    document.getElementById("Header").innerHTML = "Click On Any Of The Link To View Submission";
 }

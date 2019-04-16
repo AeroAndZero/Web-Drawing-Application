@@ -14,21 +14,16 @@ let r = [],g = [],b = [],a = []; //Color For Brush
 let lastBrush = []; //Last Brush Type
 let imgStorageRef, databaseRef; // Firebase References
 let finalData; //Stores The Submission On Submit Button Press
-let msgbox; //Div For 'Thank you' Dialog Box
 
 function setup(){
     //Window Setup
     isMobileDevice();
     windowx = 0.95 * windowWidth;
-    windowy = windowHeight * 1.4;
+    windowy = windowHeight * 0.8;
 
     canvas1 = createCanvas(windowx, windowy);
-    canvas2 = createGraphics(windowx, windowy);
-    canvas2.clear();
-
     background(0);
     canvas1.parent("sketchcontainer");
-    canvas2.parent("sketchcontainer");
 
     //Database Setup
     var storage = firebase.storage();
@@ -42,90 +37,54 @@ function setup(){
     createElement("br");
 
     //Line 1 Canvas
-    var line1 = createDiv();
-    line1.style("align","center");
+    var line1 = createDiv("Brush Size : ");
+    line1.addClass("line1");
 
     //Slider
-    var sliderdiv = createDiv("BRUSH SIZE :");
     slider = createSlider(10,70,50);
     slider.addClass('sliderClass');
-    sliderdiv.child(slider);
-        //Slider Style
-        sliderdiv.style("color","black");
-        sliderdiv.style("font-size","34px");
-        sliderdiv.style("font-family","Century Gothic");
-        sliderdiv.style("align","center");
-        slider.style("-webkit-appearance","none");
-        slider.style("width",0.50 * windowx+"px");
-        slider.style("height","13px");
-        slider.style("cursor","pointer");
-        slider.style("border-radius","20px");
-        slider.style("outline","none");
-        slider.style("background","#d3d3d3");
-        slider.style("margin-left","20px");
+    line1.child(slider);
 
     //Undo Button
     var undo = createButton("Undo");
-    sliderdiv.child(undo);
+    line1.child(undo);
     undo.mousePressed(undofunc);
-        //Undo Button css
-        undo.style("-webkit-appearance","none");
-        undo.style("border-radius","5px");
-        undo.style("background-color","#ff0000");
-        undo.style("color","#ffffff");
-        undo.style("font-size","34px");
-        undo.style("font-family","Century Gothic");
-        undo.style("margin-right","10px");
-        undo.style("margin-left","20px");
-        undo.style("margin-right","20px");
+    undo.addClass("undo");
 
     //Clear Button
     var clear = createButton("Clear");
-    sliderdiv.child(clear);
+    line1.child(clear);
     clear.mousePressed(clearfunc);
-        //Css
-        clear.style("-webkit-appearance","none");
-        clear.style("border-radius","5px");
-        clear.style("background-color","#ff0000");
-        clear.style("color","#ffffff");
-        clear.style("font-size","34px");
-        clear.style("font-family","Century Gothic");
-
-    //Setting Up Line 1 Div
-    line1.child(sliderdiv);
+    clear.addClass("clear");
 
     //Line 2 div
-    var line2 = createDiv();
-    line2.style("clear","both");
-    line2.style("align","center");
+    var line2 = createDiv("Color : ");
+    line2.addClass("line2");
 
     //Line 3 Div
     var line3 = createDiv();
-    line3.style("clear","both");
-    line3.style("align","center");
+    line3.addClass("line3");
 
     //Color Sliders
-    colorSlider = createDiv("COLOR : ");
     redColorSlider = createSlider(0,255,255);
     greenColorSlider = createSlider(0,255,255);
     blueColorSlider = createSlider(0,255,255);
     alphaColorSlider = createSlider(0,255,255);
     eraserSettings = createButton("Set Eraser");
     brushSettings = createButton("Set Brush");
+
+    line2.child(redColorSlider);
+    line2.child(greenColorSlider);
+    line2.child(blueColorSlider);
+    line2.child(alphaColorSlider);
+    BreakElement = createElement("br");
+    line2.child(BreakElement);
+    line2.child(BreakElement);
     
-    line2.child(colorSlider);
-    colorSlider.child(redColorSlider);
-    colorSlider.child(greenColorSlider);
-    colorSlider.child(blueColorSlider);
-    colorSlider.child(alphaColorSlider);
     line3.child(eraserSettings);
     line3.child(brushSettings);
 
         //Color Slider CSS :
-        colorSlider.style("align","center");
-        colorSlider.style("font-size","34px");
-        colorSlider.style("font-family","Century Gothic");
-        colorSlider.style("float","left");
         redColorSlider.addClass("redColorSliderClass");
         greenColorSlider.addClass("greenColorSliderClass");
         blueColorSlider.addClass("blueColorSliderClass");
@@ -134,7 +93,6 @@ function setup(){
         brushSettings.addClass("brushSettingsClass");
 
     //Submit Buttons
-    buttonDiv = createDiv();
     submitButton = createButton("Submit");
     viewSubmissionsButton = createButton("View Submissions");
     line3.child(submitButton);
@@ -158,29 +116,12 @@ function setup(){
 
 //----------------------------- Draw Function
 function draw(){
-    //Intialization
-    background(0);
-    // radius = slider.value();
-    
-    //overlay Canvas
-    image(canvas2,0,0);
-    canvas2.fill(255);
-    canvas2.noStroke();
-
-    //Actual Canvas
-    if(isMobileDevice() == false){
-        stroke(255,0,0);
-        strokeWeight(4);
-        fill(redColorSlider.value(),greenColorSlider.value(),blueColorSlider.value());
-        ellipse(mouseX,mouseY,slider.value(),slider.value());
-    }
-
     //Showing Selected Color
     noStroke();
     text("Brush Color", 10,30);
     textSize(20);
     fill(redColorSlider.value(),greenColorSlider.value(),blueColorSlider.value(),alphaColorSlider.value());
-    rect(120,10,30,30);
+    rect(140,10,30,30);
 }
 
 
@@ -195,12 +136,13 @@ if(isMobileDevice() == true){
 
     function touchStarted(){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
+            radius = slider.value();
             mhx = [];
             mhy = [];
         
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
-            lastradius.unshift(slider.value());
+            lastradius.unshift(radius-4);
             r.unshift(redColorSlider.value());
             g.unshift(greenColorSlider.value());
             b.unshift(blueColorSlider.value());
@@ -213,9 +155,9 @@ if(isMobileDevice() == true){
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
 
-            canvas2.stroke(r[0],g[0],b[0],a[0]);
-            canvas2.strokeWeight(slider.value()-4);
-            canvas2.line(mhx[0],mhy[0],mhx[1],mhy[1]);
+            stroke(r[0],g[0],b[0],a[0]);
+            strokeWeight(radius-4);
+            line(mhx[0],mhy[0],mhx[1],mhy[1]);
         }
     }
 
@@ -233,11 +175,12 @@ if(isMobileDevice() == true){
 //--------------------------------------- Setting Up Pointer For Mouse
     function mousePressed(){
         if(mouseX >= 0 && mouseX <= windowx && mouseY >= 0 && mouseY <= windowy){
+            radius = slider.value();
             mhx = [];
             mhy = [];
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
-            lastradius.unshift(slider.value());
+            lastradius.unshift(radius-4);
             r.unshift(redColorSlider.value());
             g.unshift(greenColorSlider.value());
             b.unshift(blueColorSlider.value());
@@ -250,9 +193,9 @@ if(isMobileDevice() == true){
             mhx.unshift(mouseX);
             mhy.unshift(mouseY);
             
-            canvas2.stroke(r[0],g[0],b[0],a[0]);
-            canvas2.strokeWeight(slider.value()-4);
-            canvas2.line(mhx[0],mhy[0],mhx[1],mhy[1]);
+            stroke(r[0],g[0],b[0],a[0]);
+            strokeWeight(radius-4);
+            line(mhx[0],mhy[0],mhx[1],mhy[1]);
         }
     }
 
@@ -269,7 +212,7 @@ if(isMobileDevice() == true){
 
 //--------------------------------------- Clear Canvas function
 function clearfunc(){
-    canvas2.clear();
+    background(0);
     undoHistoryX = [];
     undoHistoryY = [];
     mhx = [];
@@ -283,7 +226,7 @@ function clearfunc(){
 
 //--------------------------------------- Undo Function
 function undofunc(){
-    canvas2.clear();
+    background(0);
     lastradius.shift();
     undoHistoryX.shift();
     undoHistoryY.shift();
@@ -295,10 +238,10 @@ function undofunc(){
 
     //Draws The Whole Drawing      *Very Important Function*
     for(var i = undoHistoryX.length - 1; i >= 0; i--){
-        canvas2.stroke(r[i],g[i],b[i],a[i]);
-        canvas2.strokeWeight(lastradius[i]-4);
+        stroke(r[i],g[i],b[i],a[i]);
+        strokeWeight(lastradius[i]);
         for(var j = 0; j < undoHistoryX[i].length; j++){
-            canvas2.line(undoHistoryX[i][j],undoHistoryY[i][j],undoHistoryX[i][j+1],undoHistoryY[i][j+1]);
+            line(undoHistoryX[i][j],undoHistoryY[i][j],undoHistoryX[i][j+1],undoHistoryY[i][j+1]);
         }
     }
 }
