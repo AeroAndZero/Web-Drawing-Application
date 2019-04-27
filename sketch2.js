@@ -74,6 +74,7 @@ function printLink(){
         canvas1 = createCanvas(downloadedCanvasX,downloadedCanvasY);
         canvas1.parent('#sketch2container');
         canvas1.background(0);
+        
         for(var i = undoHistoryX.length - 1; i >= 0; i--){
             canvas1.stroke(r[i],g[i],b[i],a[i]);
             canvas1.strokeWeight(lastradius[i]-4);

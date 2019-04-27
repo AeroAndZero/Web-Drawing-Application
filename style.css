@@ -1,6 +1,6 @@
 /* Disabling Pull Down To Refresh*/
 body{
-    overflow: hidden;
+    /* overflow: hidden; */
     overscroll-behavior-y: none;
     background-color: #FFFF00;
     color: black;
@@ -79,12 +79,12 @@ body{
   color: #FFFFFF;
   font-size: 34px;
   font-family: 'Raleway', sans-serif;
-  margin-right: 20px
   margin-left: 20px;
 }
 
 .clear{
   -webkit-appearance: none;
+  margin-left: 20px;
   border-radius: 5px;
   background-color: #ff0000;
   color: #FFFFFF;

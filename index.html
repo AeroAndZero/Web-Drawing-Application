@@ -5,12 +5,12 @@
         <!--------------- Styles And Stuff -------------------------->
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-        <meta name="viewport" content="user-scalable=0">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#FFFF00" />
         <meta name="msapplication-navbutton-color" content="#FFFF00">
         <meta name="apple-mobile-web-app-status-bar-style" content="#FFFF00">
 
-        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="-1" />
 
@@ -26,7 +26,7 @@
                 username = prompt("Enter Your Full Name : ");
             }
             userprompt();
-
+            
             //Authentication Setup
             if(username == null || username == ""){
                 window.location.href = "nullusername.html";
@@ -51,7 +51,7 @@
         <script src="firewallconfig.js"></script>
 
     </head>
-    <body scroll="no">
+    <body>
 
         <div id="whole">
             
@@ -68,7 +68,7 @@
             <div class="bottomDiv">
                 
                 <div id="sketchcontainer" align="center">
-                    <script src="sketch.js"></script>
+                    <script src="sketch.js?ver=1.2"></script>
                 </div>
 
             </div>

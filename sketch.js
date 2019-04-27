@@ -147,6 +147,9 @@ if(isMobileDevice() == true){
             g.unshift(greenColorSlider.value());
             b.unshift(blueColorSlider.value());
             a.unshift(alphaColorSlider.value());
+
+            // Dot On Single Touch ------------------------ Remaining
+            //ellipse(mouseX,mouseY,radius-4,radius-4);
         }
     }
 
@@ -277,7 +280,8 @@ function submit(){
         username : username
     }
     databaseRef.push(finalData);
-    alert("Thank You For Your Submission !");
+    alert("Uploading Your Data.. Click Ok And Wait For Few Seconds");
+    setTimeout(function(){ alert("Data Upload Successful. Thank You For Your Submission!"); },3000);
 }
 
 //--------------------------------------- View Submission Button Function
