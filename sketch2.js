@@ -6,7 +6,6 @@ let undoHistoryX,
     r,
     g,
     b,
-    a,
     lastradius,
     downloadedCanvasX,
     downloadedCanvasY,
@@ -17,6 +16,20 @@ let database;   //Access The Firebase's Database
 let ref;        //Reference To The Database
 let keys;       //Stores Database's Keys
 let dataList;   //Stores Datalist
+let colorList = ["#44e2a0",
+                "#c23d",
+                "#552ce7",
+                "#eeb902",
+                "#2b7e1c",
+                "#159d98",
+                "#b6dd26",
+                "#9b7a19",
+                "#18b797",
+                "#772211",
+                "#9938a4",
+                "#6282d2",
+                "#f13fe1",
+                "#000000"];
 
 //----------------------------------------------- Setup Function
 function setup(){
@@ -40,6 +53,7 @@ function gotData(data){
         seplink = createDiv();
         seplink.addClass("seplink");
         var usernameAhref = createA('#',dataList[k].username);
+        usernameAhref.style("color",random(colorList));
         seplink.child(usernameAhref)
         usernameAhref.mousePressed(printLink);
     }
@@ -54,7 +68,7 @@ function errorData(err){
 //----------------------------------------------- Printing Links & Drawing Canvas
 function printLink(){
     document.getElementById("Header").innerHTML = "By " + this.html();
-
+    console.log(this.html());
     var clickKey = keys[username.indexOf(this.html())];
     var oneDrawingRef = database.ref('gifts/' + clickKey);
     
@@ -65,8 +79,7 @@ function printLink(){
         undoHistoryY = dataList[clickKey].drawY;
         r = dataList[clickKey].redChannel;
         g = dataList[clickKey].greenChannel;
-        b = dataList[clickKey].blueChannel;    
-        a = dataList[clickKey].alphaChannel;
+        b = dataList[clickKey].blueChannel;
         lastradius = dataList[clickKey].radius;
         downloadedCanvasX = dataList[clickKey].canvasX;
         downloadedCanvasY = dataList[clickKey].canvasY;
@@ -76,7 +89,7 @@ function printLink(){
         canvas1.background(0);
         
         for(var i = undoHistoryX.length - 1; i >= 0; i--){
-            canvas1.stroke(r[i],g[i],b[i],a[i]);
+            canvas1.stroke(r[i],g[i],b[i]);
             canvas1.strokeWeight(lastradius[i]-4);
             for(var j = 0; j < undoHistoryX[i].length; j++){
                 canvas1.line(undoHistoryX[i][j],undoHistoryY[i][j],undoHistoryX[i][j+1],undoHistoryY[i][j+1]);

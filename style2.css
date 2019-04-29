@@ -14,7 +14,11 @@
 .Header{
 	font-size : 72px;
 	font-family: 'PT Sans', sans-serif;
-	background-color: #00FFFF; 
+	background-color: #54d297;
 	margin-top: 0px;
-	border-radius: 6px;
+	border-radius: 12px;
+}
+
+a{
+	text-decoration: none;
 }

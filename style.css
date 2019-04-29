@@ -1,7 +1,6 @@
-/* Disabling Pull Down To Refresh*/
 body{
     /* overflow: hidden; */
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: none; /* Disabling Pull Down To Refresh*/
     background-color: #FFFF00;
     color: black;
 }
@@ -22,8 +21,9 @@ body{
   align-items: center;
   justify-content: center;
   */
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
+  margin-bottom: 10px;
 }
 
 .line2{
@@ -32,7 +32,7 @@ body{
   align-items: center;
   justify-content: center;
   */
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
 }
 
@@ -92,121 +92,15 @@ body{
   font-family: 'Raleway', sans-serif;
 }
 
-/* Color Selector Sliders Style : */
-
-    /* Red Color*/
-.redColorSliderClass {
+/* Color Selector Button Style : */
+.ColorButtons{
   -webkit-appearance: none;
-  border-radius: 5px;
-  outline: none;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  margin-right: 10px;
-  margin-left: 10px;
-}
-
-.redColorSliderClass::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 10%; 
-  background: rgb(255, 0, 0);
-  cursor: pointer;
-}
-
-.redColorSliderClass::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 10%;
-  background: rgb(255, 0, 0);
-  cursor: pointer;
-}
-
-    /* Green Color */
-
-.greenColorSliderClass {
-    -webkit-appearance: none;
-    border-radius: 5px;
-    outline: none;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    margin-right: 10px;
-  }
-  
-.greenColorSliderClass::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 10%; 
-    background: rgb(0, 255, 0);
-    cursor: pointer;
-  }
-  
-.greenColorSliderClass::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 10%;
-    background: rgb(0, 255, 0);
-    cursor: pointer;
-}
-
-    /* Blue Color */
-
-.blueColorSliderClass {
-  -webkit-appearance: none;
-  border-radius: 5px;
-  outline: none;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  margin-right: 10px;
-}
-
-.blueColorSliderClass::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 10%; 
-  background: rgb(0, 0, 255);
-  cursor: pointer;
-}
-
-.blueColorSliderClass::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 10%;
-  background: rgb(0, 0, 255);
-  cursor: pointer;
-}
-
-  /* Alpha Color Slider */
-
-.alphaColorSliderClass {
-  -webkit-appearance: none;
-  border-radius: 5px;
-  outline: none;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-  
-.alphaColorSliderClass::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 10%; 
-  background: rgb(180, 180, 180);
-  cursor: pointer;
-}
-  
-.alphaColorSliderClass::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 10%;
-  background: rgb(180, 180, 180);
-  cursor: pointer;
+  margin-right: 20px;
+  width: 50px;
+  height: 40px;
+  border-radius: 15%;
+  border-color: black;
+  border-style: solid;
 }
 
 /* Eraser And Brush Setters Style */
@@ -218,7 +112,7 @@ body{
   border-radius: 5px;
   background-color: deeppink;
   color: white;
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
 }
 
@@ -229,7 +123,7 @@ body{
   border-radius: 5px;
   background-color: deeppink;
   color: white;
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
 }
 
@@ -238,7 +132,7 @@ body{
   border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
@@ -251,7 +145,7 @@ body{
   border-radius: 3px;
   -webkit-appearance: none;
   appearance: none;
-  font-size: 34px;
+  font-size: 38px;
   font-family: 'Raleway', sans-serif;;
   background-color: rgb(38, 180, 44);
   color: white;
