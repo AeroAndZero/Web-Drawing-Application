@@ -90,7 +90,7 @@ function printLink(){
         
         for(var i = undoHistoryX.length - 1; i >= 0; i--){
             canvas1.stroke(r[i],g[i],b[i]);
-            canvas1.strokeWeight(lastradius[i]-4);
+            canvas1.strokeWeight(lastradius[i]);
             for(var j = 0; j < undoHistoryX[i].length; j++){
                 canvas1.line(undoHistoryX[i][j],undoHistoryY[i][j],undoHistoryX[i][j+1],undoHistoryY[i][j+1]);
             }
