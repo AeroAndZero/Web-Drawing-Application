@@ -2,53 +2,21 @@
     <head>
         <title>Gift Submisson</title>
 
-        <!--------------- Styles And Stuff -------------------------->
+        <!--Styles And Stuff-->
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <meta name="viewport" content=" user-scalable=0" />
         <meta name="theme-color" content="#FFFF00" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#FFFF00">
-
         <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="-1" />
-
-        <!-------------- Script For User Authentication -------------->
-
-        <script>
-            //Prompt For Name
-            let username;
-            let usernameexist = false;
-            let usernamearray;
-
-            function userprompt(){
-                username = prompt("Enter Your Full Name : ");
-            }
-            userprompt();
-            
-            //Authentication Setup
-            if(username == null || username == ""){
-                window.location.href = "nullusername.html";
-            }else{
-                usernamearray = username.split("");
-                for(var s = 0; s < usernamearray.length; s++){
-                    if(usernamearray[s] != " "){
-                        usernameexist = true;
-                    }        
-                }
-            }
-            if(usernameexist == false){
-                window.location.href = "nullusername.html";
-            }
-        </script>
-
-        <!-------------- Reference To All The P5Js Library -------------->
-
+        <script src="userauth.js"></script>
+        <!--Reference To All The P5Js Library-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
         <script src="firewallconfig.js"></script>
-
     </head>
     <body>
 
