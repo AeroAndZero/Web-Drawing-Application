@@ -1,7 +1,7 @@
 body{
     /* overflow: hidden; */
     overscroll-behavior-y: none; /* Disabling Pull Down To Refresh*/
-    background-color: #FFFF00;
+    background-color: #FFFFFF;
     color: black;
 }
 
