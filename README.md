@@ -1,14 +1,10 @@
 # Web Drawing Application
 
 Web Drawing Application Made With Javascript And P5.js Library                    
-#### [Try It Out !](https://aeroandzero.github.io/Web-Drawing-Application/)
 
 Draw shapes, lines and pictures🖌.
 
-  - click below👇
   -  [Try It Out !](https://aeroandzero.github.io/Web-Drawing-Application/)
-  - Magic😎
-
 
 #  Made With
 ### Javascript :
